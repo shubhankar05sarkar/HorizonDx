@@ -177,5 +177,3 @@ Created with ❤️ by Shubhankar Sarkar, Nehal Saraswat, Harsh Gupta, and Rajve
 *Disclaimer: The risk percentages and disease stages predicted by this model are for educational and research purposes only and are not intended to be used as a clinical diagnostic tool.*
 
 ---
-
-Feel free to adjust any section as needed. Let me know if you need further modifications!
