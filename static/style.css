@@ -1,0 +1,230 @@
+:root {
+  --primary-color: #0056b3;
+  --secondary-color: #20c997;
+  --background-color: #f8f9fa;
+  --text-color: #333;
+  --header-bg: #0056b3;
+  --section-bg: #fff;
+  --footer-bg: #e9ecef;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header-section {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-section h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.header-section h1 i {
+  margin-right: 10px;
+}
+
+.subtitle {
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.upload-section, .results-section, .chart-section, .advisory-section {
+  background: var(--section-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section h2, .results-section h2, .chart-section h2, .advisory-section h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.upload-section h2 i, .results-section h2 i, .chart-section h2 i, .advisory-section h2 i {
+  margin-right: 8px;
+}
+
+.file-upload {
+  margin-bottom: 15px;
+}
+
+.btn {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.btn-primary i {
+  margin-right: 5px;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-success {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+.btn-success i {
+  margin-right: 5px;
+}
+
+.btn-success:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.file-name-display {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.instructional-text {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.alert {
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.alert i {
+  margin-right: 5px;
+}
+
+.results-card {
+  padding: 15px;
+  background-color: #f9f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.results-card p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.no-results {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+  color: #666;
+  font-style: italic;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer-section {
+  background: var(--footer-bg);
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.consult-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  z-index: 1000;
+}
+
+.consult-btn i {
+  margin-right: 8px;
+}
+
+.consult-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.advisory-section h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-top: 20px;
+}
+
+.advisory-section ul {
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+.advisory-section .advisory-note {
+  margin-top: 20px;
+  font-style: italic;
+  color: #666;
+  border-left: 4px solid var(--primary-color);
+  padding-left: 10px;
+}

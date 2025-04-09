@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HorizonDx - Huntington Disease Prediction</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header-section">
+        <h1><i class="fas fa-dna fa-2x"></i> HorizonDx</h1>
+        <p class="subtitle">Advanced Huntington Disease Prediction Tool</p>
+    </header>
+
+    <main class="main-content">
+        <section class="upload-section animate__animated animate__fadeIn" style="animation-delay: 0s;">
+            <h2><i class="fas fa-file-upload"></i> Upload Patient Data</h2>
+            <form action="/" method="post" enctype="multipart/form-data">
+                <div class="file-upload">
+                    <label for="file" class="btn btn-primary">
+                        <i class="fas fa-folder-open"></i> Choose CSV File
+                    </label>
+                    <input type="file" name="file" id="file" accept=".csv" required style="display:none;">
+                    <p id="file-name" class="file-name-display">No file selected</p>
+                </div>
+                <button type="submit" class="btn btn-success"><i class="fas fa-play"></i> Predict</button>
+            </form>
+            <p class="instructional-text">Please upload a CSV file containing patient data for prediction.</p>
+            {% if success_message %}
+            <div class="alert alert-success animate__animated animate__slideInDown">
+                <i class="fas fa-check-circle"></i> {{ success_message }}
+            </div>
+            {% endif %}
+            {% if error_message %}
+            <div class="alert alert-danger animate__animated animate__slideInDown">
+                <i class="fas fa-exclamation-circle"></i> {{ error_message }}
+            </div>
+            {% endif %}
+        </section>
+
+        <section class="results-section animate__animated animate__fadeIn" style="animation-delay: 0.2s;">
+            <h2><i class="fas fa-heartbeat"></i> Prediction Results</h2>
+            {% if prediction %}
+            <div class="results-card animate__animated animate__zoomIn">
+                <p><strong>Predicted Stage:</strong> {{ prediction }}</p>
+                <p><strong>Risk Percentage:</strong> {{ risk_percent }}%</p>
+                <p><strong>Population Average Risk:</strong> {{ pop_avg_risk }}%</p>
+            </div>
+            {% else %}
+            <p class="no-results">Upload a CSV file to see prediction results.</p>
+            {% endif %}
+        </section>
+
+        <section class="chart-section animate__animated animate__fadeIn" style="animation-delay: 0.4s;">
+            <h2><i class="fas fa-chart-bar"></i> Risk Comparison</h2>
+            {% if prediction %}
+            <div class="chart-container animate__animated animate__slideInUp">
+                <canvas id="riskChart"></canvas>
+            </div>
+            {% else %}
+            <p class="no-results">No chart available. Please upload a CSV file.</p>
+            {% endif %}
+        </section>
+
+        <section class="advisory-section animate__animated animate__fadeIn" style="animation-delay: 0.6s;">
+            <h2><i class="fas fa-stethoscope"></i> Clinical Advisory</h2>
+            {% if prediction %}
+            <div class="stage-recommendations">
+                {% if prediction == "Pre-Symptomatic" %}
+                <h3>Medical Recommendations</h3>
+                <ul>
+                    <li>Schedule regular check-ups with a neurologist to monitor early signs.</li>
+                    <li>Genetic counseling for family planning and understanding inheritance risks.</li>
+                    <li>Participate in clinical trials focused on early intervention.</li>
+                </ul>
+                <h3>Lifestyle Adjustments</h3>
+                <ul>
+                    <li>Adopt a healthy lifestyle to strengthen brain health (e.g., Mediterranean diet, regular exercise).</li>
+                    <li>Engage in mental exercises like puzzles, memory games, or learning new skills.</li>
+                </ul>
+                <h3>Support</h3>
+                <ul>
+                    <li>Educate the patient and family about the disease and its progression.</li>
+                    <li>Join Huntington’s Disease (HD) support groups for emotional and informational guidance.</li>
+                </ul>
+                {% elif prediction == "Early" %}
+                <h3>Medical Recommendations</h3>
+                <ul>
+                    <li>Start symptomatic treatment for minor cognitive, emotional, or motor changes (e.g., antidepressants, physical therapy).</li>
+                    <li>Work with occupational therapists to address early functional challenges.</li>
+                </ul>
+                <h3>Lifestyle Adjustments</h3>
+                <ul>
+                    <li>Increase focus on stress management techniques such as yoga or meditation.</li>
+                    <li>Maintain an active lifestyle to support brain plasticity and motor skills.</li>
+                </ul>
+                <h3>Support</h3>
+                <ul>
+                    <li>Engage in counseling to cope with emotional changes.</li>
+                    <li>Develop a long-term care plan in collaboration with healthcare providers and family.</li>
+                </ul>
+                {% elif prediction == "Middle" %}
+                <h3>Medical Recommendations</h3>
+                <ul>
+                    <li>Begin treatments targeting moderate motor symptoms (e.g., physical therapy for chorea) and speech therapy for communication challenges.</li>
+                    <li>Prescribe medications for mood swings or depression.</li>
+                </ul>
+                <h3>Lifestyle Adjustments</h3>
+                <ul>
+                    <li>Introduce adaptive tools for daily activities, such as utensils for easy gripping.</li>
+                    <li>Encourage social interaction to reduce isolation and maintain mental health.</li>
+                </ul>
+                <h3>Support</h3>
+                <ul>
+                    <li>Seek professional caregiving support as daily tasks become more challenging.</li>
+                    <li>Educate caregivers about managing behavioral changes and increasing patience.</li>
+                </ul>
+                {% elif prediction == "Late" %}
+                <h3>Medical Recommendations</h3>
+                <ul>
+                    <li>Focus on palliative care to manage advanced symptoms like severe motor impairment or cognitive decline.</li>
+                    <li>Use feeding tubes or other assistive devices for eating and mobility.</li>
+                </ul>
+                <h3>Lifestyle Adjustments</h3>
+                <ul>
+                    <li>Create a safe environment to prevent injuries (e.g., padded furniture, non-slip mats).</li>
+                    <li>Minimize noise and clutter to reduce sensory overload.</li>
+                </ul>
+                <h3>Support</h3>
+                <ul>
+                    <li>Provide 24/7 professional care or consider a specialized facility.</li>
+                    <li>Offer grief counseling and emotional support to the family.</li>
+                </ul>
+                {% endif %}
+            </div>
+            <p class="advisory-note">The lifestyle modifications outlined here are intended solely as preliminary recommendations. In view of the seriousness of the condition, it is imperative that you seek consultation with a licensed medical professional to obtain a thorough assessment and an individualized treatment plan.</p>
+            {% else %}
+            <p class="no-results">No advisory available. Please upload a CSV file to get recommendations.</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <p>© 2025 HorizonDx. All rights reserved.</p>
+    </footer>
+
+    <a href="{{ url_for('consult') }}" class="consult-btn">
+        <i class="fas fa-stethoscope"></i> Consult Now
+    </a>
+
+    <script>
+        document.getElementById('file').addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : 'No file selected';
+            document.getElementById('file-name').textContent = fileName;
+        });
+
+        {% if prediction %}
+        const ctx = document.getElementById('riskChart').getContext('2d');
+        let primaryColor = getComputedStyle(document.body).getPropertyValue('--primary-color');
+        let secondaryColor = getComputedStyle(document.body).getPropertyValue('--secondary-color');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Patient Risk', 'Population Average'],
+                datasets: [{
+                    label: 'Risk Percentage',
+                    data: [{{ risk_percent }}, {{ pop_avg_risk }}],
+                    backgroundColor: [primaryColor, secondaryColor],
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { display: true, text: 'Risk (%)' }
+                    }
+                },
+                plugins: {
+                    title: { display: true, text: 'Risk Comparison' }
+                }
+            }
+        });
+        {% endif %}
+    </script>
+</body>
+</html>

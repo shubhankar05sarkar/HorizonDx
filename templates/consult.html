@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Data Entry - HorizonDx</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <link rel="stylesheet" href="../static/style2.css">
+<body>
+    <header class="header-section">
+            <h1><i class="fas fa-dna fa-2x"></i> HorizonDx</h1>
+        <p class="subtitle">Advanced Huntington Disease Prediction Tool</p>
+    </header>
+
+    <main class="main-content">
+        <section class="data-entry-section animate__animated animate__fadeIn" style="animation-delay: 0s;">
+            <h2><i class="fas fa-user-plus"></i> Enter Patient Data</h2>
+            <form action="https://api.web3forms.com/submit" method="post">
+                <div class="form-field">
+                    <input type="hidden" name="access_key" value="10bbfc79-5d3b-4de8-a7b6-a11f8c6b064f">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-field">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-field">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" min="0" required>
+                </div>
+                <div class="form-field">
+                    <label for="risk_percent">Risk Percentage</label>
+                    <input type="number" id="risk_percent" name="risk_percent" min="0" max="100" step="0.01" required>
+                </div>
+                <div class="form-field">
+                    <label for="family_history">Family History</label>
+                    <select id="family_history" name="family_history" required>
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success"><i class="fas fa-play"></i> Submit</button>
+            </form>
+            <p class="instructional-text">Please enter patient details to submit for analysis.</p>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <p>© 2025 HorizonDx. All rights reserved.</p>
+    </footer>
+</body>
+</html>
