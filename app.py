@@ -12,7 +12,7 @@ model, le_cognitive, le_sex, le_family_history, le_motor_symptoms, le_gene_mutat
 
 features = [
     'Age',
-    'HTT_CAG_Repeat_Length',
+    'HTT_CAG_Repeat_Length', 
     'Cognitive_Decline',
     'Chorea_Score',
     'Brain_Volume_Loss',
@@ -36,7 +36,6 @@ def get_stage_from_risk(risk):
         return "Late"
 
 def transform_with_unseen_handling(column, encoder, default_value=-1):
-    """Transform a column using the encoder, replacing unseen labels with a default value."""
     transformed = []
     for val in column:
         if val in encoder.classes_:
