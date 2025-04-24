@@ -29,7 +29,6 @@ def get_stage_from_risk(risk):
         return "Late"
 
 def transform_with_unseen_handling(column, encoder, default_value=-1):
-    """Transform a column using the encoder, replacing unseen labels with a default value."""
     transformed = []
     for val in column:
         if val in encoder.classes_:
@@ -43,7 +42,7 @@ Tk().withdraw()
 file_path = askopenfilename(title="Select patient data file", filetypes=[("CSV files", "*.csv")])
 
 if not file_path:
-    print("No file selected.")
+    print("No file selected.") 
     exit()
 
 try:
