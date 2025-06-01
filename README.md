@@ -121,7 +121,7 @@ By fusing comprehensive data analysis with machine learning, HorizonDx serves no
 
 ---
 
-## Screenshots
+## User Interface
 
 ### Home Page
 *This is the main interface where users upload a patient CSV file to get predictions.*
