@@ -3,7 +3,7 @@
 A comprehensive, data-driven web application designed to predict the progression of Huntington’s Disease using patient data. This tool leverages advanced machine learning techniques to generate a risk percentage and corresponding disease stage (Pre-Symptomatic, Early, Middle, or Late) based on multiple clinical and genetic features. It also compares the patient’s risk against the population average and offers a pathway for users to request professional consultation.
 
 ---
-
+ 
 ## Overview
 
 HorizonDx is an innovative, data-driven tool designed to assist clinicians and patients in evaluating and tracking the progression of Huntington’s Disease—a rare, inherited neurodegenerative disorder. Huntington’s Disease (HD) is characterized by the gradual breakdown of nerve cells in the brain, which leads to a decline in a person's physical, cognitive, and emotional abilities. Common symptoms include involuntary movements (chorea), difficulties with speech and swallowing, cognitive decline, and behavioral changes. The onset and progression of HD are influenced by genetic factors, most notably the number of CAG repeats in the HTT gene.
